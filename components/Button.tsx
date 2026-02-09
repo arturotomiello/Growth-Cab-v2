@@ -1,16 +1,16 @@
 import React from 'react';
 import { ButtonProps } from '../types';
 
-const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  variant = 'primary', 
-  className = '', 
+const Button: React.FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
+  className = '',
   onClick,
   fullWidth = false
 }) => {
-  const baseStyles = "font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer active:scale-95";
+  const baseStyles = "font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100";
   const widthStyle = fullWidth ? "w-full" : "w-auto";
-  
+
   // Styles from JSON Design System
   const variants = {
     primary: "bg-[#004BDD] text-white hover:bg-[#0039A8] rounded-[50px] px-8 py-4 shadow-[rgba(255,255,255,0.2)_0px_1px_0px_0px_inset,rgba(0,0,0,0.16)_0px_2px_8px_0px]",
@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <button 
+    <button
       onClick={onClick}
       className={`${baseStyles} ${widthStyle} ${variants[variant]} ${className}`}
     >

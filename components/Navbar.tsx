@@ -18,10 +18,10 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#services" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
-          <a href="#process" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Process</a>
-          <a href="#results" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Results</a>
-          <a href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Testimonials</a>
+          <a href="#services" className="text-sm font-medium text-gray-300 hover:text-white transition-colors focus:outline-none focus:text-accent focus:underline">Services</a>
+          <a href="#process" className="text-sm font-medium text-gray-300 hover:text-white transition-colors focus:outline-none focus:text-accent focus:underline">Process</a>
+          <a href="#results" className="text-sm font-medium text-gray-300 hover:text-white transition-colors focus:outline-none focus:text-accent focus:underline">Results</a>
+          <a href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-white transition-colors focus:outline-none focus:text-accent focus:underline">Testimonials</a>
         </div>
 
         {/* CTA */}
@@ -32,9 +32,12 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-white"
+        <button
+          className="md:hidden text-white cursor-pointer p-2 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded-lg"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           {isOpen ? <X /> : <Menu />}
         </button>
@@ -42,10 +45,10 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-20 left-4 right-4 glass-panel rounded-2xl p-6 md:hidden flex flex-col gap-4 animate-in slide-in-from-top-5">
-          <a href="#services" className="text-lg font-medium text-white" onClick={() => setIsOpen(false)}>Services</a>
-          <a href="#process" className="text-lg font-medium text-white" onClick={() => setIsOpen(false)}>Process</a>
-          <a href="#results" className="text-lg font-medium text-white" onClick={() => setIsOpen(false)}>Results</a>
+        <div id="mobile-menu" className="absolute top-20 left-4 right-4 glass-panel rounded-2xl p-6 md:hidden flex flex-col gap-4 animate-in slide-in-from-top-5">
+          <a href="#services" className="text-lg font-medium text-white hover:text-accent transition-colors focus:outline-none focus:text-accent focus:underline" onClick={() => setIsOpen(false)}>Services</a>
+          <a href="#process" className="text-lg font-medium text-white hover:text-accent transition-colors focus:outline-none focus:text-accent focus:underline" onClick={() => setIsOpen(false)}>Process</a>
+          <a href="#results" className="text-lg font-medium text-white hover:text-accent transition-colors focus:outline-none focus:text-accent focus:underline" onClick={() => setIsOpen(false)}>Results</a>
           <Button variant="primary" fullWidth onClick={() => setIsOpen(false)}>
             Book a Call
           </Button>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Send, Target, MessageSquare } from 'lucide-react';
+import ExpandableCards from './ExpandableCards';
 
 const ServiceCard = ({ icon: Icon, title, description, step }: { icon: any, title: string, description: string, step: string }) => (
   <div className="group relative p-8 rounded-3xl glass-panel hover:bg-white/5 transition-all duration-300 border border-white/5 hover:border-accent/50">
@@ -13,7 +14,7 @@ const ServiceCard = ({ icon: Icon, title, description, step }: { icon: any, titl
     <p className="text-gray-400 leading-relaxed font-body">
       {description}
     </p>
-    
+
     {/* Alien Tech Decoration */}
     <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-white/20 group-hover:bg-accent transition-colors" />
   </div>
@@ -36,19 +37,19 @@ const ServicesSection: React.FC = () => {
           {/* Connector Line (Desktop) */}
           <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent -z-10" />
 
-          <ServiceCard 
+          <ServiceCard
             step="01"
             icon={Send}
             title="Outbound"
             description="We run personalized prospecting campaigns that flood your calendar with qualified leads using hyper-targeted data sources."
           />
-          <ServiceCard 
+          <ServiceCard
             step="02"
             icon={Target}
             title="LinkedIn Ads"
             description="We run Account Based Marketing (ABM) campaigns that turn cold accounts into sales-ready opportunities through retargeting."
           />
-          <ServiceCard 
+          <ServiceCard
             step="03"
             icon={MessageSquare}
             title="LinkedIn Content"
@@ -56,6 +57,10 @@ const ServicesSection: React.FC = () => {
           />
         </div>
       </div>
+
+      {/* Expanded visual experience */}
+      <ExpandableCards />
+
     </section>
   );
 };

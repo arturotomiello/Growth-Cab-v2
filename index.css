@@ -1,0 +1,175 @@
+@property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+}
+
+@property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+}
+
+@property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+}
+
+@property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+}
+
+@property --color-1 {
+    syntax: '<color>';
+    initial-value: #000;
+    inherits: false;
+}
+
+@property --color-2 {
+    syntax: '<color>';
+    initial-value: #08012c;
+    inherits: false;
+}
+
+@property --color-3 {
+    syntax: '<color>';
+    initial-value: #4e1e40;
+    inherits: false;
+}
+
+@property --color-4 {
+    syntax: '<color>';
+    initial-value: #70464e;
+    inherits: false;
+}
+
+@property --color-5 {
+    syntax: '<color>';
+    initial-value: #88394c;
+    inherits: false;
+}
+
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+}
+
+@property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(340, 75%, 60%, 0.2);
+    inherits: true;
+}
+
+@property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(340, 75%, 40%, 0.75);
+    inherits: true;
+}
+
+@property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+}
+
+@property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+}
+
+@property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+}
+
+@property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+}
+
+@property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+}
+
+/* Base class for the gradient button */
+.gradient-button {
+    position: relative;
+    appearance: none;
+    cursor: pointer;
+    background: radial-gradient(var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+            var(--color-1) var(--stop-1),
+            var(--color-2) var(--stop-2),
+            var(--color-3) var(--stop-3),
+            var(--color-4) var(--stop-4),
+            var(--color-5) var(--stop-5));
+    transition:
+        --pos-x 0.5s,
+        --pos-y 0.5s,
+        --spread-x 0.5s,
+        --spread-y 0.5s,
+        --color-1 0.5s,
+        --color-2 0.5s,
+        --color-3 0.5s,
+        --color-4 0.5s,
+        --color-5 0.5s,
+        --border-angle 0.5s,
+        --border-color-1 0.5s,
+        --border-color-2 0.5s,
+        --stop-1 0.5s,
+        --stop-2 0.5s,
+        --stop-3 0.5s,
+        --stop-4 0.5s,
+        --stop-5 0.5s;
+}
+
+/* Default Variant - Black/Dark (matches right button request) */
+.gradient-button-black {
+    /* Uses defaults defined in @property or I can enforce specific dark colors here */
+    --color-1: #000000;
+    --color-2: #151726;
+    /* Surface color from tailwind config */
+    --color-3: #1a233b;
+    /* Alien gradient start */
+    --color-4: #0A0A0A;
+    /* Background */
+    --color-5: #000000;
+
+    /* Border colors for dark theme */
+    --border-color-1: rgba(255, 255, 255, 0.1);
+    --border-color-2: rgba(255, 255, 255, 0.05);
+}
+
+/* Blue Variant - Azzurro blu (matches left button request) */
+.gradient-button-blue {
+    --color-1: #002B80;
+    /* Darker blue */
+    --color-2: #004BDD;
+    /* Primary Accent Blue */
+    --color-3: #0066FF;
+    /* Lighter Blue */
+    --color-4: #3385FF;
+    /* Highlight Blue */
+    --color-5: #004BDD;
+
+    --border-angle: 200deg;
+    --border-color-1: rgba(0, 75, 221, 0.6);
+    /* Accent border */
+    --border-color-2: rgba(0, 75, 221, 0.2);
+}
+
+/* Hover effects (optional, keeping consistent with provided code transition logic) */
+.gradient-button:hover {
+    --pos-x: 0%;
+    --pos-y: 0%;
+    --spread-x: 120%;
+    --spread-y: 120%;
+}

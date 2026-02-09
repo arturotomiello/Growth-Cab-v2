@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import { GradientButton } from './ui/GradientButton';
 import { ArrowRight, Play } from 'lucide-react';
 
 const Hero: React.FC = () => {
@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
       {/* Planet Background */}
       <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[120vw] h-[120vw] rounded-full bg-gradient-to-b from-black via-[#004BDD]/20 to-black pointer-events-none opacity-40 blur-3xl z-0" />
       <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] rounded-full shadow-[inset_0_-40px_100px_rgba(0,75,221,0.3)] pointer-events-none z-0 border-b border-accent/10 opacity-30" />
-      
+
       {/* Floating Orbs */}
       <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-accent/30 rounded-full blur-[80px] animate-float" />
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/20 rounded-full blur-[100px] animate-float-delayed" />
@@ -27,27 +27,27 @@ const Hero: React.FC = () => {
         </h1>
 
         <p className="font-body text-lg md:text-xl text-textSecondary max-w-2xl mx-auto mb-10 leading-relaxed">
-          We build corporate revenue engines that feel alien in their efficiency. 
-          Leverage AI & Advanced Tech to automate your go-to-market. 
+          We build corporate revenue engines that feel alien in their efficiency.
+          Leverage AI & Advanced Tech to automate your go-to-market.
           Predictable pipeline, closed deals, zero gravity friction.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button variant="primary">
-            Start Your Mission <ArrowRight className="w-4 h-4" />
-          </Button>
-          <Button variant="secondary">
-            <Play className="w-4 h-4 fill-current mr-1" /> Watch Case Study
-          </Button>
+          <GradientButton variant="blue" className="w-full sm:w-auto">
+            Start Your Mission <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+          </GradientButton>
+          <GradientButton variant="default" className="w-full sm:w-auto">
+            <Play className="mr-2 w-4 h-4 fill-current" aria-hidden="true" /> Watch Case Study
+          </GradientButton>
         </div>
 
         <div className="mt-20">
           <p className="text-sm text-gray-500 mb-6 uppercase tracking-widest">Trusted by Earth's Best Teams</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-             {/* Mock Logos */}
-             {['Stripe', 'Linear', 'OpenAI', 'Segment', 'Retool'].map((logo) => (
-               <span key={logo} className="text-xl font-heading font-bold text-white">{logo}</span>
-             ))}
+            {/* Mock Logos */}
+            {['Stripe', 'Linear', 'OpenAI', 'Segment', 'Retool'].map((logo) => (
+              <span key={logo} className="text-xl font-heading font-bold text-white">{logo}</span>
+            ))}
           </div>
         </div>
       </div>

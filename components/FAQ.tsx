@@ -3,17 +3,24 @@ import { Plus, Minus } from 'lucide-react';
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const contentId = `faq-${question.toLowerCase().replace(/\s+/g, '-').replace(/[?]/g, '')}`;
 
   return (
     <div className="border-b border-white/10 last:border-0">
-      <button 
-        className="w-full py-6 flex items-center justify-between text-left hover:text-accent transition-colors"
+      <button
+        className="w-full py-6 flex items-center justify-between text-left hover:text-accent transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[#050505] rounded-lg"
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
       >
         <span className="font-heading font-medium text-lg text-white">{question}</span>
-        {isOpen ? <Minus className="w-5 h-5 text-accent" /> : <Plus className="w-5 h-5 text-gray-500" />}
+        {isOpen ? <Minus className="w-5 h-5 text-accent" aria-hidden="true" /> : <Plus className="w-5 h-5 text-gray-500" aria-hidden="true" />}
       </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-48 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+      <div
+        id={contentId}
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-48 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+        aria-hidden={!isOpen}
+      >
         <p className="text-gray-400 leading-relaxed pr-8">
           {answer}
         </p>
@@ -34,19 +41,19 @@ const FAQ: React.FC = () => {
         </div>
 
         <div className="glass-panel rounded-3xl px-8 border border-white/5">
-          <FAQItem 
+          <FAQItem
             question="What makes you different from other lead gen agencies?"
             answer="We don't just send spam emails. We build a complete go-to-market infrastructure including LinkedIn Ads, content, and multi-channel orchestration. We act as a strategic partner, not a vendor."
           />
-          <FAQItem 
+          <FAQItem
             question="Do you guarantee results?"
             answer="Yes. Our agreements are performance-based. We define specific KPIs (Qualified Calls/Pipeline) before we start. If we don't hit them, we work for free until we do."
           />
-          <FAQItem 
+          <FAQItem
             question="Who is this for?"
             answer="B2B Tech, SaaS, and Service companies with a Customer Lifetime Value (LTV) of at least $15,000. We work best with teams that have product-market fit but need scale."
           />
-          <FAQItem 
+          <FAQItem
             question="How long until we see the first meetings?"
             answer="Setup takes 14 days. You typically start seeing the first qualified meetings on your calendar by Week 3 or 4 of the engagement."
           />
