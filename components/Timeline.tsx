@@ -88,7 +88,7 @@ const Timeline: React.FC = () => {
                  <div className="text-sm text-gray-400 mb-2 font-mono">ESTIMATED LAUNCH</div>
                  <div className="text-2xl font-bold text-white flex items-center gap-2">
                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                   Day 14-21
+                   Day 29
                  </div>
               </div>
             </div>
