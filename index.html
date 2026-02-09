@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://framerusercontent.com/images/PG4vR5YY415BtvfwRJ918A45jQ.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090F1D" />
+    <title>GrowthCab | Outbound from Another Planet</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#090F1D",
+              accent: "#004BDD",
+              background: "#0A0A0A",
+              textPrimary: "#FFFFFF",
+              textSecondary: "#A1A1AA",
+              surface: "#151726",
+            },
+            fontFamily: {
+              heading: ['Manrope', 'sans-serif'],
+              body: ['Switzer', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+            backgroundImage: {
+              'alien-gradient': 'radial-gradient(circle at center, #1a233b 0%, #0A0A0A 70%)',
+              'glow-blue': 'conic-gradient(from 180deg at 50% 50%, #004BDD 0deg, #0A0A0A 180deg, #004BDD 360deg)',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'beam': 'beam 3s linear infinite',
+              'scroll': 'scroll 30s linear infinite',
+            },
+            keyframes: {
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #0A0A0A;
+        color: #FFFFFF;
+        font-family: 'Switzer', sans-serif;
+      }
+
+      /* Star Background Animation */
+      .stars-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+      }
+      
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        animation: twinkle 5s infinite ease-in-out;
+      }
+
+      @keyframes twinkle {
+        0% { opacity: 0; transform: scale(0.5); }
+        50% { opacity: 0.8; transform: scale(1.2); }
+        100% { opacity: 0; transform: scale(0.5); }
+      }
+
+      /* Custom Animations */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+      }
+
+      @keyframes beam {
+        0% { top: -100%; opacity: 0; }
+        50% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+
+      @keyframes glow-pulse {
+        0% { box-shadow: 0 0 5px currentColor; }
+        50% { box-shadow: 0 0 20px currentColor, 0 0 10px currentColor inset; }
+        100% { box-shadow: 0 0 5px currentColor; }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0A0A0A; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #004BDD; 
+      }
+
+      .glass-panel {
+        background: rgba(21, 23, 38, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      
+      .bento-card {
+        background: rgba(21, 23, 38, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+      .bento-card:hover {
+        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(21, 23, 38, 0.6);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- Script to generate stars -->
+    <script>
+      const starContainer = document.createElement('div');
+      starContainer.className = 'stars-container';
+      document.body.appendChild(starContainer);
+
+      for(let i=0; i<150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        star.style.opacity = Math.random();
+        starContainer.appendChild(star);
+      }
+    </script>
+  </body>
+</html>
